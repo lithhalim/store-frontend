@@ -1,0 +1,19 @@
+$main-color:rgb(179, 162, 71);
+
+.add-tocart-container {
+    height: 600px; width: 100%; padding: 15px;
+    .header-addToCart {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 10px;text-transform: capitalize; font-size: .7em;
+        color: $main-color;
+    }
+
+    .Addtocard-image {
+        width: 50px;height: 50px;
+
+    }
+    .quintity-button {
+        display: flex; justify-content: space-around;width: 150px;
+        align-items: center;
+    }
+}

@@ -1,0 +1,41 @@
+
+.main-all-catagory {
+    display: grid;grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap: 15px;padding: 50px 100px;
+}
+
+.header-card {
+    padding: 10px;   
+}
+.header-card p{
+    font-weight: bold;text-transform: capitalize; margin-bottom: 5px;
+}
+.footer-section {
+    display: flex;align-items: center;justify-content: space-between;
+    text-transform: capitalize; font-weight: bold; padding: 15px;
+}
+.footer-section .discroiption {
+     font-size: .8em;
+}
+
+.card-container:hover   {
+    transform: scale(1.01);cursor: pointer;transition: all .5s;
+} 
+
+.footer-catagory-cad .like-maker {
+    color: silver;
+}
+.footer-catagory-cad .like-maker.active {
+    color: red;
+}
+
+
+
+
+
+.element-custom {
+    text-transform: capitalize;
+}
+.element-custom .element-icon {
+    display: flex;justify-content: space-between;padding:15px 0px;
+}
