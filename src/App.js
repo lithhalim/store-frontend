@@ -11,6 +11,7 @@ import { Catagory_Provider } from "./context-api/catagory-context";
 
 import Navbar from "../src/combonants/home-page/Nav-Bar/Navbar";
 import Main_catagory_page from "../src/combonants/catagory-page/main-catagory-page"
+import Crearte_Post from "./combonants/cerate_post/Crearte_Post";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App=()=>{
                                 <BrowserRouter >
                                         <Routes>
                                                 <Route path="/" element={<><Navbar/> <Main_catagory_page/> </>}/>
+                                                <Route path="/createPost" element={<><Navbar/> <Crearte_Post/></>}/>
                                         </Routes>
                                 </BrowserRouter>
                 </Provider>

@@ -1,14 +1,25 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 
-import { addtocart } from '../../../redux/addToCart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Show_details_modal from './show-details-modal';
+import axios from 'axios';
+import { AllPostes } from '../../../redux/FetchData';
+import { addtocart } from '../../../redux/addToCart';
+
 
 
 function Card_footer({dataCard}) {
-  const dispatch=useDispatch();
-  const addToCartDetail=()=>{dispatch(addtocart(dataCard))};
+    const dispatch=useDispatch();
+
+
+    const addToCartDetail=()=>{
+      if(Number(dataCard.number_item)>1){
+        axios.post(`${process.env.REACT_APP_DATA}updateData`,{dataCard:dataCard,type:"add Cart"})
+        dispatch(AllPostes())
+        dispatch(addtocart(dataCard))
+        }
+    };
 
 
 

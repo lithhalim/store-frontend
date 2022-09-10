@@ -33,7 +33,6 @@ function Navbarselect() {
         <li>electronics</li>
         <li>food</li>
     </motion.ul>
-
     </>
 
 

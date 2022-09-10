@@ -4,18 +4,26 @@ import "./catagory.css"
 import {motion} from "framer-motion";
 import {Catagory_Create_Context} from "../../context-api/catagory-context";
 import { useContext } from 'react';
-
-import AllData from "../../json-data/storeData.json"
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function Main_catagory_page() {
+  //select the all data  fetching from databse
+  const selectData=useSelector(state=>(state.allpostes.value))
+  const dispatch=useDispatch()
+
   const [dataUse,setdataUse]=useState(false);
   const CatagoryContext=useContext(Catagory_Create_Context);
+
   
+
+  //select the data depend on catagory 
   useEffect(()=>{
-    let dataWillUse=AllData.filter((data)=>(data.catagories==CatagoryContext.catagory));
-    setdataUse(dataWillUse)
-  },[CatagoryContext.catagory])
+    if(selectData.payload!==undefined){
+      let dataWillUse=selectData.payload.data.filter((data)=>(data.catagories==CatagoryContext.catagory));
+      setdataUse(dataWillUse)
+    }
+  },[CatagoryContext.catagory,selectData,dispatch])
 
 
   return (

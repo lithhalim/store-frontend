@@ -5,19 +5,28 @@ import Button from '@mui/material/Button';
 
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch } from 'react-redux';
+import { AllPostes } from '../../../redux/FetchData';
+import axios from 'axios';
 import { removeFromCart } from '../../../redux/addToCart';
+
 
 
 export default function Modal_addtocart(dataUse) {
     const dispatch=useDispatch();
     
     const rows=dataUse.datause;
+    console.log(rows)
+
     let totalPrice=dataUse.datause.reduce((acc,current)=>(acc+(current.price)),0)
 
 
     const DeleteItem=(e)=>{
       let postId=e.currentTarget.getAttribute("datatype");
+      let number_item=e.currentTarget.getAttribute("dataType2")
+
+      axios.post(`${process.env.REACT_APP_DATA}updateData`,{dataCard:{id:postId,number_item:number_item},type:"remove Cart"});
       dispatch(removeFromCart(postId));
+      dispatch(AllPostes())
     }
 
 
@@ -39,7 +48,7 @@ export default function Modal_addtocart(dataUse) {
       renderCell:(params)=>{
       return(
         <>
-        <div onClick={DeleteItem} datatype={params.row.id}>
+        <div onClick={DeleteItem} datatype={params.row.id} dataType2={params.row.number_item}>
           <Button variant="contained" style={{fontSize:".9em",color:"white",backgroundColor:"red",marginLeft:"10px",fontWeight:"bold"}}  >Delete</Button>
         </div>
         </>
