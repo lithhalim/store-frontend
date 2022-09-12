@@ -1,25 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Show_details_modal from './show-details-modal';
-import axios from 'axios';
-import { AllPostes } from '../../../redux/FetchData';
 import { addtocart } from '../../../redux/addToCart';
-
+import { modifyquantity } from '../../../redux/addToCart';
 
 
 function Card_footer({dataCard}) {
-    const dispatch=useDispatch();
+  const select_Item=useSelector((state)=>(state.addToCartSlice))
+  const dispatch=useDispatch();
 
+  const addToCartDetail=()=>{
+      //check if the item on cart just increse number
+      let DataCheck=select_Item.allProduct.findIndex((data)=>(data.id==dataCard.id));
+      if(DataCheck==-1){
+        //add new Object Have Quantity
+        let AddQuintyty={quantity:1}
+        let newObject={...dataCard,...AddQuintyty}
+        dispatch(addtocart(newObject))
+      }else{
+        dispatch(modifyquantity(dataCard))
 
-    const addToCartDetail=()=>{
-      if(Number(dataCard.number_item)>1){
-        axios.post(`${process.env.REACT_APP_DATA}updateData`,{dataCard:dataCard,type:"add Cart"})
-        dispatch(AllPostes())
-        dispatch(addtocart(dataCard))
-        }
-    };
+      }
+  };
+
 
 
 

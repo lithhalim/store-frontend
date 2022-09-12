@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 
 
 const initialState = {
   value: 0,
-  allProduct:[]
+  allProduct:[],
+  quentety:0
 }
 
-if(window.localStorage.AddToCartElement){
-  initialState.value=JSON.parse(window.localStorage.AddToCartElement).value;
-  initialState.allProduct=JSON.parse(window.localStorage.AddToCartElement).allProduct;
+if(window.localStorage.AddToCart){
+  initialState.value=JSON.parse(window.localStorage.AddToCart).value;
+  initialState.allProduct=JSON.parse(window.localStorage.AddToCart).allProduct;
 }
 
 
@@ -20,26 +22,47 @@ export const addToCartSlice = createSlice({
   reducers: {
     addtocart: (state, action) => {
         state.value=state.value+=1;
-        state.allProduct=[...state.allProduct,action.payload]
-        window.localStorage.AddToCartElement=JSON.stringify(state)
+        state.allProduct=[...state.allProduct,action.payload];
+        window.localStorage.AddToCart=JSON.stringify(state);
+
     },
     removeFromCart: (state, action) => {
         state.value=state.value-=1;
-        state.allProduct=state.allProduct.filter((a,i)=>(a.id!=action.payload))
-        window.localStorage.AddToCartElement=JSON.stringify(state)
+        state.allProduct=state.allProduct.filter((a,i)=>(a.id!=action.payload));
+        window.localStorage.AddToCart=JSON.stringify(state);
+
       },
     clearAll: (state) => {
           state.value=0
           state.allProduct=[]
-          window.localStorage.AddToCartElement=JSON.stringify(state)
-    },
+          window.localStorage.AddToCart=JSON.stringify(state)
+      },
+    modifyquantity:(state,action)=>{
+      //Find index of specific object using findIndex method.    
+      const objIndex = state.allProduct.findIndex((obj => obj.id == action.payload.id));
+      let newnumber=Number(state.allProduct[objIndex].quantity)
+      newnumber+=1
+      state.allProduct[objIndex].quantity =newnumber;
+      window.localStorage.AddToCart=JSON.stringify(state)
+      },
+    modifyquantitydecrese:(state,action)=>{
+        //Find index of specific object using findIndex method.    
+        const objIndex = state.allProduct.findIndex((obj => obj.id == action.payload.id));
+        let newnumber=Number(state.allProduct[objIndex].quantity)
+        if(newnumber>1){
+          newnumber-=1
+          state.allProduct[objIndex].quantity =newnumber
+          window.localStorage.AddToCart=JSON.stringify(state)  
+        }
+      }
+  
 
   
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  addtocart,removeFromCart,clearAll } = addToCartSlice.actions
+export const {  addtocart,removeFromCart,modifyquantity,modifyquantitydecrese } = addToCartSlice.actions
 
 export default addToCartSlice.reducer
 
