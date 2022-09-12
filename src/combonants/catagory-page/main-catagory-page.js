@@ -19,13 +19,14 @@ function Main_catagory_page() {
     axios.get(`${process.env.REACT_APP_DATA}allpostes/${CatagoryContext.catagory}`).then((data)=>{
         setdataUse(data)
     })
-  },[])
+  },[CatagoryContext])
 
 
   return (
 
+    
     <motion.div className='main-all-catagory'  initial={{x:"-100vh"}} animate={{x:0}} transition={{duration:.5}}>
-      {dataUse!==false? dataUse.map((a,i)=>( <Card_Catagory_page key={i} dataCard={a}/>)):<></>}
+      {dataUse!==false? dataUse.data.map((a,i)=>( <Card_Catagory_page key={i} dataCard={a}/>)):<></>}
     </motion.div>
   )
 }

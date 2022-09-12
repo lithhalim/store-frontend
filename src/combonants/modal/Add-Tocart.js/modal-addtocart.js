@@ -60,7 +60,9 @@ export default function Modal_addtocart(dataUse) {
           )
         }
       },
-      { field: 'price', headerName: 'price', width: 100  },
+      { field: 'price', headerName: 'price', width: 70  },
+      { field: 'number_item', headerName: 'Total Quntain', width: 100  },
+
       { field: 'quantity',headerName: 'Quantity', type: 'number',width: 150,
           renderCell:(params)=>{
             return(
@@ -72,7 +74,7 @@ export default function Modal_addtocart(dataUse) {
             )
           }
         },
-      { field: 'catagories',headerName: 'catagories', type: 'text',width: 150,},
+      { field: 'catagories',headerName: 'catagories', type: 'text',width: 80,},
       { field: 'tatalPrice',headerName: 'Total-Price', type: 'number',width: 90,
         renderCell:(params)=>{
           return(

@@ -13,8 +13,8 @@ export const AllPostes = createAsyncThunk(
     'allpostesHave/AllPostes',
     //userid to send argement with calling function
     async (arrgement, thunkAPI) => {
-        const DataUse=await axios.get(`${process.env.REACT_APP_DATA}allpostes`)
-    return DataUse
+    //     const DataUse=await axios.get(`${process.env.REACT_APP_DATA}allpostes`)
+    // return DataUse
     }
   )
   

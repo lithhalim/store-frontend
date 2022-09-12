@@ -41,9 +41,12 @@ export const addToCartSlice = createSlice({
       //Find index of specific object using findIndex method.    
       const objIndex = state.allProduct.findIndex((obj => obj.id == action.payload.id));
       let newnumber=Number(state.allProduct[objIndex].quantity)
-      newnumber+=1
-      state.allProduct[objIndex].quantity =newnumber;
-      window.localStorage.AddToCart=JSON.stringify(state)
+
+      if(newnumber<state.allProduct[objIndex].number_item ){
+        newnumber+=1
+        state.allProduct[objIndex].quantity =newnumber;
+        window.localStorage.AddToCart=JSON.stringify(state)  
+      }
       },
     modifyquantitydecrese:(state,action)=>{
         //Find index of specific object using findIndex method.    
