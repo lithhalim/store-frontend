@@ -10,6 +10,7 @@ import "../../catagory-page/catagory.css"
 export default function MultiActionAreaCard({dataUse}) {
 
     const {Name_Product,catagories,country,description,id,image,price}=dataUse
+    console.log(dataUse)
 
   return (
     <Card sx={{ maxWidth: 345 }}>

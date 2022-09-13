@@ -12,6 +12,7 @@ import { Catagory_Provider } from "./context-api/catagory-context";
 import Navbar from "../src/combonants/home-page/Nav-Bar/Navbar";
 import Main_catagory_page from "../src/combonants/catagory-page/main-catagory-page"
 import Crearte_Post from "./combonants/cerate_post/Crearte_Post";
+import Creadit_Card from "./combonants/creadit-card/Creadit_Card";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,8 @@ const App=()=>{
                                         <Routes>
                                                 <Route path="/" element={<><Navbar/> <Main_catagory_page/> </>}/>
                                                 <Route path="/createPost" element={<><Navbar/> <Crearte_Post/></>}/>
+                                                <Route path="/creadit" element={<><Navbar/> <Creadit_Card/></>}/>
+
                                         </Routes>
                                 </BrowserRouter>
                 </Provider>

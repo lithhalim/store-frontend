@@ -21,6 +21,9 @@ import * as Yup from 'yup';
     price: Yup.number()
        .label('Price Must')
        .required(),
+    country: Yup.string()
+       .label('country  item')
+       .required(),
     catagories: Yup.string()
        .label('Catagory'),
     number_item: Yup.number()
@@ -57,13 +60,14 @@ function Crearte_Post() {
         postDescription: '',
         price: '',
         catagories:'',
-        number_item:''
+        number_item:'',
+        country:''
     }
 
     
 
     const Get_AllData=(data)=>{
-        const {Name_Product,number_item,postDescription,price}=data;
+        const {Name_Product,number_item,postDescription,price,country}=data;
 
         let DataUse={
             Name_Product:Name_Product,
@@ -72,6 +76,7 @@ function Crearte_Post() {
             image:image[0],
             catagories:catago,
             number_item:number_item,
+            country:country
         }
 
         
@@ -105,6 +110,10 @@ function Crearte_Post() {
                     <label>Post Description</label>
                     <Field type="text" as="textarea" name="postDescription" className='postDescription' placeholder='postDescription'/>
                     {errors.postDescription && touched.postDescription ? <div className='error-section'>{errors.postDescription}</div> : null}
+
+                    <label>Country</label>
+                    <Field type="text" name="country" className='country' placeholder='country'/>
+                    {errors.country && touched.country ? <div className='error-section'>{errors.country}</div> : null}
 
                     <div className='item2'>
                         <label>Price</label>

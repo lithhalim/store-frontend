@@ -102,7 +102,9 @@ export default function Modal_addtocart(dataUse) {
     
 
 
-
+const gotopayment=()=>{
+  Navi("/creadit")
+}
 
 
   return (
@@ -118,7 +120,7 @@ export default function Modal_addtocart(dataUse) {
           rowsPerPageOptions={[5]}
         />
         <div style={{width:"30vw",margin:"50px auto 50px auto"}} >
-          <Button variant="contained" style={{width:"100%"}} >Add To Payment</Button>
+          <Button variant="contained" style={{width:"100%"}}  onClick={gotopayment}>Add To Payment</Button>
         </div>
 
     </div>
