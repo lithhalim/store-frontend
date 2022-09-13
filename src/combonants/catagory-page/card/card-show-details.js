@@ -9,7 +9,7 @@ import "../../catagory-page/catagory.css"
 
 export default function MultiActionAreaCard({dataUse}) {
 
-    const {Name_Product,catagories,country,description,id,image,price}=dataUse
+    const {Name_Product,catagories,country,postDescription,id,image,price}=dataUse
     console.log(dataUse)
 
   return (
@@ -30,7 +30,7 @@ export default function MultiActionAreaCard({dataUse}) {
             <li>
                 <div className='element-icon'>
                     <span style={{fontWeight:"bold"}}>Catagoties:</span>{catagories}
-                    <span  style={{fontWeight:"bold"}}>Description:</span>{description}
+                    <span  style={{fontWeight:"bold"}}>Description:</span>{postDescription}
                 </div>
             </li>
                 
